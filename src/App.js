@@ -15,7 +15,18 @@ export default class App extends Component {
     imgSrc: "./me.png",
     profession: "Student",
     show: false,
+    count: 0,
+    intervalId: 0,
+    count: 1,
   };
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        count: this.state.count + 1,
+      });
+    }, 1000);
+  }
 
   handleClick = () => {
     this.setState({
@@ -26,6 +37,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>{this.state.count}</h1>
         <Button variant="primary" size="lg" onClick={this.handleClick}>
           Show Profile
         </Button>
